@@ -4,7 +4,7 @@ import knoten.Abwasserkanal;
 import knoten.Haushalt;
 import knoten.Knoten;
 import knoten.Kontrollschacht;
-import org.jetbrains.annotations.Nullable;
+import rohrleitungen.Rohrtyp;
 
 import java.util.ArrayList;
 
@@ -20,18 +20,22 @@ public class Rohrsystem {
 
     }
 
-    public void addKnoten(String knotenart, double x, double y, String ID, @Nullable Double wassermenge){
+    public void addKnoten(String knotenart, double x, double y, String ID, double wassermenge){
+
         switch (knotenart){
-            case "haushalt": haushaelte.add(new Haushalt(x, y, wassermenge, ID));
-            case "kontrollschacht": kontrollschaechte.add(new Kontrollschacht(x,y, ID));
-            case "abwasser": abw = new Abwasserkanal(x,y, ID);
+            case "haushalt": knoten.put(ID, new Haushalt(x, y, wassermenge, ID)); break;
+            case "kontrollschacht": knoten.put(ID, new Kontrollschacht(x,y, ID)); break;
+            case "abwasser": knoten.put(ID, new Abwasserkanal(x,y, ID)); break;
         }
     }
 
     public void berechneVolumenstrom(){
-        for(Haushalt h : haushaelte){
-            h.berechneVolumenstrom();
+        for (Knoten k : knoten.values()){
+            if(k instanceof Haushalt h){
+                h.berechneVolumenstrom(0);
+            }
         }
+        volumenstromberechnet = true;
     }
 
 

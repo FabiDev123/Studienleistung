@@ -11,7 +11,7 @@ public class Abwasserkanal extends Knoten{
 
 
     @Override
-    public void berechneVolumenstrom() {
-
+    public void berechneVolumenstrom(double volumen) {
+        this.wasserabflussmenge +=volumen;
     }
 }

@@ -11,8 +11,8 @@ public class Haushalt extends Knoten{
     }
 
     @Override
-    public void berechneVolumenstrom() {
-
+    public void berechneVolumenstrom(double volumen) {
+        nachfolger.berechneVolumenstrom(this.wasserabflussmenge);
     }
 
 
