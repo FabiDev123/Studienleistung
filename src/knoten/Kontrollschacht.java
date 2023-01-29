@@ -14,5 +14,8 @@ public class Kontrollschacht extends Knoten{
     }
 
 
+    @Override
+    public void berechneVolumenstrom() {
 
+    }
 }

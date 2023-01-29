@@ -10,6 +10,7 @@ public abstract class Knoten {
 
     double wasserabflussmenge;
 
+    public abstract void berechneVolumenstrom();
 
 
 

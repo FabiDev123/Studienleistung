@@ -2,6 +2,7 @@ package utils;
 
 import knoten.Abwasserkanal;
 import knoten.Haushalt;
+import knoten.Knoten;
 import knoten.Kontrollschacht;
 import org.jetbrains.annotations.Nullable;
 
@@ -9,8 +10,10 @@ import java.util.ArrayList;
 
 public class Rohrsystem {
 
-    ArrayList haushaelte = new ArrayList();
-    ArrayList kontrollschaechte = new ArrayList();
+    boolean volumenstromberechnet = false;
+
+    ArrayList<Haushalt> haushaelte = new ArrayList<>();
+    ArrayList<Kontrollschacht> kontrollschaechte = new ArrayList<>();
     Abwasserkanal abw;
 
     public Rohrsystem(){
@@ -22,6 +25,12 @@ public class Rohrsystem {
             case "haushalt": haushaelte.add(new Haushalt(x, y, wassermenge, ID));
             case "kontrollschacht": kontrollschaechte.add(new Kontrollschacht(x,y, ID));
             case "abwasser": abw = new Abwasserkanal(x,y, ID);
+        }
+    }
+
+    public void berechneVolumenstrom(){
+        for(Haushalt h : haushaelte){
+            h.berechneVolumenstrom();
         }
     }
 

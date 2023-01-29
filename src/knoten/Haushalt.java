@@ -10,6 +10,11 @@ public class Haushalt extends Knoten{
         this.wasserabflussmenge = wasserabflussmenge;
     }
 
+    @Override
+    public void berechneVolumenstrom() {
+
+    }
+
 
 
 

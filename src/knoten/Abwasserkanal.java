@@ -10,4 +10,8 @@ public class Abwasserkanal extends Knoten{
     }
 
 
+    @Override
+    public void berechneVolumenstrom() {
+
+    }
 }
