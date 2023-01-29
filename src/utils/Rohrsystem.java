@@ -6,15 +6,15 @@ import knoten.Knoten;
 import knoten.Kontrollschacht;
 import rohrleitungen.Rohrtyp;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Rohrsystem {
 
     boolean volumenstromberechnet = false;
 
-    ArrayList<Haushalt> haushaelte = new ArrayList<>();
-    ArrayList<Kontrollschacht> kontrollschaechte = new ArrayList<>();
-    Abwasserkanal abw;
+    Map<String, Knoten> knoten = new HashMap<>();
+
+    List<Rohrtyp> kreisprofile = new ArrayList<>();
 
     public Rohrsystem(){
 
@@ -29,6 +29,17 @@ public class Rohrsystem {
         }
     }
 
+    public void verbinde(String id1, String id2) {
+        Knoten start = knoten.get(id1);
+        Knoten ende = knoten.get(id2);
+        start.setNachfolger(ende);
+    }
+
+    public void addKreisprofil(int durchmesser, double durchfluss){
+        kreisprofile.add(new Rohrtyp(durchmesser, durchfluss));
+    }
+
+
     public void berechneVolumenstrom(){
         for (Knoten k : knoten.values()){
             if(k instanceof Haushalt h){
@@ -38,7 +49,19 @@ public class Rohrsystem {
         volumenstromberechnet = true;
     }
 
+    public void generiereRohrleitungen(/* List<Rohrtyp> rohre */) {
+        kreisprofile.sort(Comparator.comparingDouble(Rohrtyp::getMaxdurchfluss));
+        for (Knoten k : knoten.values()) {
+            k.setRohrleitung(kreisprofile);
+        }
+    }
 
+    public void print() {
+        for (Knoten k : knoten.values()) {
+            if(!k.getID().equals("11"))
+                System.out.println(k.getID() + ": " + k.getPunkt() + "; Menge: " + k.getWasserabflussmenge() + ", Typ: " + k.getLeitung().getRohrtyp().getBezeichnung());
+        }
+    }
 
 
 

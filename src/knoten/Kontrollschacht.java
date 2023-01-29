@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Kontrollschacht extends Knoten{
 
-    ;
 
     public Kontrollschacht(double x, double y, String ID){
         punkt = new Punkt(x, y);
@@ -15,7 +14,8 @@ public class Kontrollschacht extends Knoten{
 
 
     @Override
-    public void berechneVolumenstrom() {
-
+    public void berechneVolumenstrom(double volumen) {
+        this.wasserabflussmenge += volumen;
+        nachfolger.berechneVolumenstrom(this.wasserabflussmenge);
     }
 }

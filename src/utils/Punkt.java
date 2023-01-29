@@ -23,4 +23,9 @@ public class Punkt {
     public double getY() {
         return y;
     }
+
+    @Override
+    public String toString() {
+        return "x: " + x + ", y: " + y;
+    }
 }

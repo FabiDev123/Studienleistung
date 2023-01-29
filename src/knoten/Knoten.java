@@ -1,13 +1,15 @@
 package knoten;
 
+import rohrleitungen.Rohrleitung;
+import rohrleitungen.Rohrtyp;
 import utils.Punkt;
+
+import java.util.List;
 
 public abstract class Knoten {
 
     Punkt punkt;
-
     String ID;
-
     double wasserabflussmenge;
     Knoten nachfolger;
     Rohrleitung leitung;
