@@ -1,9 +1,6 @@
 package knoten;
 
-import rohrleitungen.Rohrtyp;
 import utils.Punkt;
-
-import java.util.List;
 
 public class Haushalt extends Knoten{
 
@@ -18,8 +15,4 @@ public class Haushalt extends Knoten{
         nachfolger.berechneVolumenstrom(this.wasserabflussmenge);
     }
 
-    @Override
-    public void setRohrleitung(List<Rohrtyp> rohre) {
-
-    }
 }

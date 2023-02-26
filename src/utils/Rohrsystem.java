@@ -44,22 +44,27 @@ public class Rohrsystem {
         for (Knoten k : knoten.values()){
             if(k instanceof Haushalt h){
                 h.berechneVolumenstrom(0);
+            }else if (k instanceof Kontrollschacht ko){
+                ko.berechneVolumenstrom(0);
             }
         }
         volumenstromberechnet = true;
     }
 
-    public void generiereRohrleitungen(/* List<Rohrtyp> rohre */) {
+    public void generiereRohrleitungen() {
         kreisprofile.sort(Comparator.comparingDouble(Rohrtyp::getMaxdurchfluss));
         for (Knoten k : knoten.values()) {
             k.setRohrleitung(kreisprofile);
         }
+
     }
 
     public void print() {
         for (Knoten k : knoten.values()) {
-            if(!k.getID().equals("11"))
-                System.out.println(k.getID() + ": " + k.getPunkt() + "; Menge: " + k.getWasserabflussmenge() + ", Typ: " + k.getLeitung().getRohrtyp().getBezeichnung());
+            System.out.println(k.getID() + ": " + k.getPunkt() + "; Menge: " + k.getWasserabflussmenge());
+            if(!(k instanceof Abwasserkanal)) {
+                System.out.println("Typ: " + k.getLeitung().getRohrtyp().getBezeichnung()+ " Auslastung: " + k.getLeitung().getAuslastungProzent());
+            }
         }
     }
 

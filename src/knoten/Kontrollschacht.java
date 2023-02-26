@@ -2,8 +2,6 @@ package knoten;
 
 import utils.Punkt;
 
-import java.util.ArrayList;
-
 public class Kontrollschacht extends Knoten{
 
 
@@ -15,7 +13,13 @@ public class Kontrollschacht extends Knoten{
 
     @Override
     public void berechneVolumenstrom(double volumen) {
+
+        if(volumen == 0){
+            nachfolger.berechneVolumenstrom(this.wasserabflussmenge);
+            return;
+        }
+
         this.wasserabflussmenge += volumen;
-        nachfolger.berechneVolumenstrom(this.wasserabflussmenge);
+
     }
 }

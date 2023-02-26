@@ -6,14 +6,14 @@ import utils.Punkt;
 public class Rohrleitung {
     int laenge;
     Rohrtyp rohrtyp;
-    double auslastung;  // auslastung in Prozent
+    double auslastung;
 
 
 
     public Rohrleitung(Punkt punkt1, Punkt punkt2, Rohrtyp typ, double durchfluss){
         calculateDistance(punkt1, punkt2);
         rohrtyp = typ;
-        this.auslastung = rohrtyp.getMaxdurchfluss() / durchfluss;
+        this.auslastung = durchfluss / rohrtyp.getMaxdurchfluss();
     }
 
     private void calculateDistance(Punkt p1, Punkt p2){

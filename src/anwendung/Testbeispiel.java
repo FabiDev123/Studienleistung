@@ -1,10 +1,6 @@
 package anwendung;
 
-import rohrleitungen.Rohrtyp;
 import utils.Rohrsystem;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Testbeispiel {
 
@@ -47,9 +43,6 @@ public class Testbeispiel {
 
         rohrsystem.berechneVolumenstrom();
 
-
-
-//        List<Rohrtyp> rohre = new ArrayList<>();
         rohrsystem.addKreisprofil(300, 98.69);
         rohrsystem.addKreisprofil(400, 210.2);
         rohrsystem.addKreisprofil(500, 378.28);
